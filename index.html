@@ -27,7 +27,6 @@
         height: 100vh;
         object-fit: cover;
         transform: scaleX(-1);
-        display: none;
       }
 
       #glasses {
@@ -39,7 +38,6 @@
         top: 50%;
         transform: translate(-50%, -50%);
         pointer-events: none;
-        display: none;
       }
 
       #controls {
@@ -54,51 +52,11 @@
         text-align: center;
         width: 90vw;
         max-width: 400px;
-        display: none;
       }
 
       #sizeSlider {
         width: 100%;
         margin-top: 8px;
-      }
-
-      #hint {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        text-align: center;
-        z-index: 10;
-        max-width: 90vw;
-        display: none;
-      }
-
-      #startButton {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 14px 24px;
-        border-radius: 12px;
-        font-size: 1rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      }
-
-      #startButton img {
-        width: 24px;
-        height: 24px;
       }
     </style>
   </head>
@@ -106,19 +64,6 @@
     <video id="video" autoplay playsinline></video>
     <img id="glasses" src="glasses.png" />
 
-    <!-- Icon credit: "Camera" icon by Acland Studio from The Noun Project (CC BY 3.0) -->
-    <!-- زر تشغيل الكاميرا -->
-    <button id="startButton">
-      <img src="camera-icon.png" alt="Camera Icon">
-      اضغط لتشغيل الكاميرا وتجربة النظارات
-    </button>
-
-    <!-- العبارة التوضيحية -->
-    <div id="hint">
-      لأفضل تجربة، تأكد أن وجهك في منتصف الشاشة والنظارات فوق العينين مباشرة.
-    </div>
-
-    <!-- واجهة التحكم -->
     <div id="controls">
       <label for="sizeSlider">تكبير → | حجم صورة النظارة | ← تصغير</label><br>
       <input type="range" id="sizeSlider" min="500" max="700" value="600">
@@ -128,9 +73,6 @@
       const video = document.getElementById('video');
       const glasses = document.getElementById('glasses');
       const slider = document.getElementById('sizeSlider');
-      const startButton = document.getElementById('startButton');
-      const hint = document.getElementById('hint');
-      const controls = document.getElementById('controls');
 
       slider.addEventListener('input', () => {
         glasses.style.width = `${slider.value}px`;
@@ -140,17 +82,12 @@
         try {
           const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
           video.srcObject = stream;
-          video.style.display = 'block';
-          glasses.style.display = 'block';
-          hint.style.display = 'block';
-          controls.style.display = 'block';
-          startButton.style.display = 'none';
         } catch (error) {
           alert("تعذر الوصول إلى الكاميرا. تأكد من منح الإذن أو استخدام متصفح يدعم ذلك.");
         }
       }
 
-      startButton.addEventListener('click', setupCamera);
+      setupCamera();
     </script>
   </body>
 </html>
