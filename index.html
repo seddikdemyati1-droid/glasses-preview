@@ -12,12 +12,18 @@
       html, body {
         margin: 0;
         padding: 0;
-        height: 100dvh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         overflow: hidden;
-        touch-action: manipulation;
         font-family: sans-serif;
+        touch-action: manipulation;
+      }
+
+      #wrapper {
         position: relative;
+        width: 100vw;
+        height: 100dvh;
+        overflow: hidden;
       }
 
       video {
@@ -60,12 +66,13 @@
     </style>
   </head>
   <body>
-    <video id="video" autoplay playsinline></video>
-    <img id="glasses" src="glasses.png" />
-
-    <div id="controls">
-      <label for="sizeSlider">تكبير → | حجم صورة النظارة | ← تصغير</label><br>
-      <input type="range" id="sizeSlider" min="500" max="700" value="600">
+    <div id="wrapper">
+      <video id="video" autoplay playsinline></video>
+      <img id="glasses" src="glasses.png" />
+      <div id="controls">
+        <label for="sizeSlider">تكبير ← حجم صورة النظارة ← تصغير</label><br>
+        <input type="range" id="sizeSlider" min="500" max="700" value="600">
+      </div>
     </div>
 
     <script>
