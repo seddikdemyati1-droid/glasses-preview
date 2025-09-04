@@ -12,26 +12,27 @@
       html, body {
         margin: 0;
         padding: 0;
-        height: 100%;
-        width: 100%;
+        height: 100dvh;
+        width: 100vw;
         overflow: hidden;
         touch-action: manipulation;
         font-family: sans-serif;
+        position: relative;
       }
 
       video {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         transform: scaleX(-1);
       }
 
       #glasses {
         position: absolute;
-        width: 600px; /* يبدأ بنفس قيمة السلايدر */
+        width: 600px;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -72,11 +73,10 @@
       const glasses = document.getElementById('glasses');
       const slider = document.getElementById('sizeSlider');
 
-      // ضبط الحجم الابتدائي للنظارات حسب قيمة السلايدر
-      glasses.style.width = `${slider.value}px`;
+      glasses.style.width = ${slider.value}px;
 
       slider.addEventListener('input', () => {
-        glasses.style.width = `${slider.value}px`;
+        glasses.style.width = ${slider.value}px;
       });
 
       async function setupCamera() {
