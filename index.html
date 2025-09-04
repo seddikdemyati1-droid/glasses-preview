@@ -40,7 +40,9 @@
 
       #glasses {
         position: absolute;
-        width: 500px;
+        width: 30vw; /* حجم ابتدائي نسبي */
+        min-width: 400px;
+        max-width: 900px;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -75,7 +77,7 @@
       <img id="glasses" src="glasses.png" />
       <div id="controls">
         <label for="sizeSlider">تكبير ← حجم صورة النظارة ← تصغير</label><br>
-        <input type="range" id="sizeSlider" min="400" max="600" value="500">
+        <input type="range" id="sizeSlider" min="400" max="900" value="600">
       </div>
     </div>
 
@@ -84,6 +86,7 @@
       const glasses = document.getElementById('glasses');
       const slider = document.getElementById('sizeSlider');
 
+      // السلايدر يتحكم بالحجم بـ px بعد التحميل
       glasses.style.width = `${slider.value}px`;
 
       slider.addEventListener('input', () => {
