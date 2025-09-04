@@ -42,7 +42,7 @@
         position: absolute;
         width: 600px;
         left: 50%;
-        top: 42%;
+        top: 50%;
         transform: translate(-50%, -50%);
         pointer-events: none;
         z-index: 2;
@@ -51,55 +51,3 @@
       #controls {
         position: absolute;
         bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.85);
-        padding: 10px 20px;
-        border-radius: 12px;
-        font-size: 1rem;
-        text-align: center;
-        width: 90vw;
-        max-width: 400px;
-        z-index: 3;
-      }
-
-      #sizeSlider {
-        width: 100%;
-        margin-top: 8px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <video id="video" autoplay playsinline></video>
-      <img id="glasses" src="glasses.png" />
-      <div id="controls">
-        <label for="sizeSlider">تكبير ← حجم صورة النظارة ← تصغير</label><br>
-        <input type="range" id="sizeSlider" min="500" max="700" value="600">
-      </div>
-    </div>
-
-    <script>
-      const video = document.getElementById('video');
-      const glasses = document.getElementById('glasses');
-      const slider = document.getElementById('sizeSlider');
-
-      glasses.style.width = `${slider.value}px`;
-
-      slider.addEventListener('input', () => {
-        glasses.style.width = `${slider.value}px`;
-      });
-
-      async function setupCamera() {
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-          video.srcObject = stream;
-        } catch (error) {
-          alert("تعذر الوصول إلى الكاميرا. تأكد من منح الإذن أو استخدام متصفح يدعم ذلك.");
-        }
-      }
-
-      setupCamera();
-    </script>
-  </body>
-</html>
