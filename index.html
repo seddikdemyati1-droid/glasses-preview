@@ -42,7 +42,7 @@
         position: absolute;
         width: 600px;
         left: 50%;
-        top: 50%;
+        top: 42%;
         transform: translate(-50%, -50%);
         pointer-events: none;
         z-index: 2;
@@ -84,7 +84,6 @@
       const glasses = document.getElementById('glasses');
       const slider = document.getElementById('sizeSlider');
 
-      // ضبط الحجم الابتدائي للنظارات حسب قيمة السلايدر
       glasses.style.width = `${slider.value}px`;
 
       slider.addEventListener('input', () => {
